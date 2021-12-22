@@ -52,7 +52,7 @@
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+          <li><a class="nav-link scrollto active" href="{% url 'base_app:base_app_view' %}">Home</a></li>
           <li><a class="nav-link scrollto" href="#about">About</a></li>
           <li><a class="nav-link scrollto" href="#menu">Menu</a></li>
           <li><a class="nav-link scrollto" href="#specials">Specials</a></li>
@@ -66,7 +66,15 @@
             </ul>
           </li>
             {% endif %}
-          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+            {% if user.is_staff %}
+                <li><a class="nav-link scrollto" href="{% url 'admin:index' %}">Admin</a></li>
+            {% endif %}
+          <li class="dropdown"><a href="#"><span>User</span> <i class="bi bi-chevron-down"></i></a>
+              <ul>
+                  <li><a href="{% url 'login' %}">Log in</a></li>
+                  <li><a href="{% url 'logout' %}">Log out</a></li>
+              </ul>
+          </li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
