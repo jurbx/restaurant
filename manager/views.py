@@ -24,4 +24,4 @@ def reservations_list(request):
 @user_passes_test(is_manager)
 def update_reservation(request, pk):
     ModelFormRegistration.objects.filter(pk=pk).update(is_processed=True)
-    return redirect('manager:reservation_list')
+    return redirect('manager:reservations_list')
