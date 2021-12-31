@@ -19,14 +19,17 @@ class FormRegistration(forms.ModelForm):
                                 'placeholder': "Your Phone", 'data-rule': "minlen:4",
                                 'data-msg': "Please enter at least 4 chars"
                             }))
-    date = forms.CharField(widget=forms.TextInput(attrs={'type': "text", 'name': "date", 'class': "form-control",
+    date = forms.DateField(widget=forms.TextInput(attrs={'type': "text", 'name': "date", 'class': "form-control",
                                                          'id': "date", 'placeholder': "Date", 'data-rule': "minlen:4",
+                                                         'data-msg': "Please enter at least 4 chars"}),
+                           input_formats=['%Y.%m.%d', '%Y-%m-%d', '%Y %m %d',
+                                          '%d.%m.%Y', '%d-%m-%Y', '%d %m %Y'])
 
-                                                         'data-msg': "Please enter at least 4 chars"}))
-
-    time = forms.CharField(widget=forms.TextInput(attrs={'type': "text", 'class': "form-control", 'name': "time",
-                                                         'id': "time", 'placeholder': "Time", 'data-rule': "minlen:4",
-                                                         'data-msg': "Please enter at least 4 chars"}))
+    time = forms.DateTimeField(widget=forms.TextInput(attrs={'type': "text", 'class': "form-control", 'name': "time",
+                                                             'id': "time", 'placeholder': "Time",
+                                                             'data-rule': "minlen:4",
+                                                             'data-msg': "Please enter at least 4 chars"}),
+                               input_formats=['%H:%M'])
 
     count_of_people = forms.IntegerField(widget=forms.TextInput(attrs={'type': "number", 'class': "form-control",
                                                                           'name': "people", 'id': "people",
