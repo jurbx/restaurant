@@ -23,5 +23,5 @@ def reservations_list(request):
 @login_required(login_url='/login/')
 @user_passes_test(is_manager)
 def update_reservation(request, pk):
-    ModelFormRegistration.objects.filter(pk=pk).update(is_proceseed=True)
-    return redirect('reservation_list')
+    ModelFormRegistration.objects.filter(pk=pk).update(is_processed=True)
+    return redirect('manager:reservation_list')
